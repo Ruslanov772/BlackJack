@@ -1,1 +1,18 @@
-<app-card></app-card>
+<div class="playingCards faceImages">
+  <app-card
+  *ngFor="let card of hand"
+  [rank]="card.rank"
+  [suit]="card.suit"
+  ></app-card>
+</div>
+
+<hr/>
+
+<button  (click)="giveCard()" [disabled]="total() >= 21">Give another card </button>
+<button (click)="reset()">Reset</button>
+
+<hr/>
+
+<p>Total: {{total()}}</p>
+<p *ngIf="total() === 21">You win!</p>
+<p *ngIf="total() > 21">You lose!</p>

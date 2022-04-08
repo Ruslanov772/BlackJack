@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {Card, CardDeck} from "../ lib/CardDeck";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'lab52';
+  cardDeck: CardDeck;
+  hand: Card[] = [];
+  constructor() {
+    this.cardDeck = new CardDeck();
+    this.hand = this.cardDeck.getCards(2);
+  }
+
+  giveCard() {
+    const card = this.cardDeck.getCard();
+    this.hand.push(card);
+  }
+
+  reset() {
+    this.cardDeck = new CardDeck();
+    this.hand = this.cardDeck.getCards(2);
+  }
+
+  total() {
+    let sum = 0;
+    this.hand.forEach(card => {
+      sum += card.getScore();
+    });
+    return sum;
+  }
 }

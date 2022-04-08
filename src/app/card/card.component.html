@@ -1,12 +1,5 @@
-<div class="playingCards faceImages">
-
-
-<span class="card rank-k diams">
-
-    <span class="rank">K</span>
-
-    <span class="suit">♦</span>
-
+<span [ngClass]="getClassname()">
+    <span class="rank">{{this.rank}}</span>
+    <span class="suit">{{getSymbol()}}</span>
 </span>
 
-</div>
